@@ -1,0 +1,42 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.sidebar-lateral {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  height: 100%;
+  width: 230px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.sidebar-btn.active {
+  background-color: #0d6efd;
+  color: #fff !important;
+  border-radius: 8px;
+}
+
+.sidebar-btn:hover {
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.contenido-principal {
+  margin-left: 250px;
+  padding: 80px 30px;
+}
+
+/* Limita el tamaño de las imágenes y ajusta la tarjeta */
+.producto-img {
+  max-height: 160px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.producto-card {
+  font-size: 0.95rem;
+  padding: 0.5rem;
+}

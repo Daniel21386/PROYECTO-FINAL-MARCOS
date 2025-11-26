@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBoost - Login Moderno</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <!-- PANEL FORMULARIO -->
+        <div class="login-right">
+            <div class="form-container">
+                <!-- FORMULARIO LOGIN -->
+                <div id="loginForm" class="form-section active">
+                    <div class="form-header">
+                        <h2>Bienvenido</h2>
+                        <p>Inicia sesión para continuar</p>
+                    </div>
+
+                    <div th:if="${param.error}" class="alert-box show error">
+                        Usuario o contraseña incorrectos
+                    </div>
+
+                    <form method="post" action="/login" id="login-form">
+                        <div class="form-group">
+                            <label for="username">Usuario</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="username" name="username" placeholder="Tu usuario" required>
+                                <i class="fas fa-user"></i>
+                                <span class="error-message" id="username-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <div class="input-wrapper">
+                                <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
+                                <i class="fas fa-lock"></i>
+                                <span class="error-message" id="password-error"></span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    </form>
+
+                    <div class="form-footer">
+                        <p>¿No tienes cuenta? <a href="/register" class="toggle-form-link">Regístrate aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/login-validation.js"></script>
+</body>
+</html>

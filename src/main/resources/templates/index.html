@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitBoost - Suplementos Nutricionales</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- Iconos Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/javascript/carrito.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+    <div class="container">
+      <a href="#" class="navbar-brand fw-bold"><span class="text-primary">Fit</span>Boost</a>
+      <form class="d-none d-lg-flex mx-auto w-50">
+        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar">
+        <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-star"
+        aria-controls="navbar-star" aria-expanded="false" aria-label="Menú de navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-star">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="/" class="nav-link active">Inicio</a></li>
+          <li class="nav-item"><a href="/productos" class="nav-link">Productos</a></li>
+          <li class="nav-item"><a href="/nosotros" class="nav-link">Nosotros</a></li>
+          <!-- Carrito de compras -->
+          <li class="nav-item ms-3">
+            <a href="#" class="nav-link position-relative" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+              <i class="bi bi-cart3 fs-4"></i>
+              <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                0
+                <span class="visually-hidden">productos en el carrito</span>
+              </span>
+            </a>
+          </li>
+          
+          <!-- Icono de usuario con dropdown -->
+<li class="nav-item dropdown ms-3">
+  <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+     role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-person-circle fs-3 me-2"></i> 
+    <span id="nombreUsuario"></span>
+
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+    <li><a class="dropdown-item" href="/cliente/compras"><i class="bi bi-bag"></i> Ver Pedidos</a></li>
+    <li><a class="dropdown-item" href="/cliente/perfil"><i class="bi bi-person"></i> Editar Perfil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><button class="dropdown-item text-danger" id="logout-btn">Cerrar sesión</button></li>
+  </ul>
+</li>
+
+
+        <!-- Barra de busqueda -->
+        <form class="d-lg-none mt-3">
+          <div class="input-group">
+            <input class="form-control" type="search" placeholder="Buscar..." aria-label="Buscar">
+            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carrusel -->
+  <div id="carouselE1" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselE1" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselE1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselE1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="/imagenes/portada01.png" class="d-block w-100" alt="Portada suplementos deportivos 1">
+      </div>
+      <div class="carousel-item">
+        <img src="/imagenes/portada02.jpg" class="d-block w-100" alt="Portada suplementos deportivos 2">
+      </div>
+      <div class="carousel-item">
+        <img src="/imagenes/portada03.jpg" class="d-block w-100" alt="Portada suplementos deportivos 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselE1" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselE1" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <!-- Beneficios -->
+  <section class="section-icons py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-4 mb-3">
+          <i class="bi bi-airplane fs-1 text-primary"></i>
+          <h4 class="mt-2">Envío Gratis</h4>
+          <p>En compras mayores a $5000</p>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <i class="bi bi-cash-coin fs-1 text-success"></i>
+          <h4 class="mt-2">Devoluciones</h4>
+          <p>Si no te gusta, te devolvemos tu dinero</p>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <i class="bi bi-gift-fill fs-1 text-danger"></i>
+          <h4 class="mt-2">Regalo</h4>
+          <p>En compras mayores a $5000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section class="Productos py-5" id="productos">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Productos Destacados</h2>
+        <p class="text-muted">Suplementos de la mejor calidad para tu rendimiento.</p>
+      </div>
+      <div class="row g-4">
+
+        <!-- Producto 1 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="/imagenes/suple1.png" class="card-img-top" alt="Proteína whey">
+            <div class="card-body">
+              <h5 class="card-title">Proteína Whey</h5>
+              <p class="card-text">Aumenta tu masa muscular y mejora tu recuperación.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="/imagenes/suple2.png" class="card-img-top" alt="Creatina monohidratada">
+            <div class="card-body">
+              <h5 class="card-title">Creatina</h5>
+              <p class="card-text">Mejora tu fuerza, potencia y rendimiento deportivo.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="/imagenes/suple3.png" class="card-img-top" alt="BCAA aminoácidos">
+            <div class="card-body">
+              <h5 class="card-title">BCAA</h5>
+              <p class="card-text">Recuperación y energía en entrenamientos intensos.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="/imagenes/suple4.png" class="card-img-top" alt="Pre workout suplemento">
+            <div class="card-body">
+              <h5 class="card-title">Pre-Workout</h5>
+              <p class="card-text">Explosión de energía y enfoque para tus rutinas.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="imagenes/suple5.png" class="card-img-top" alt="Multivitamínico">
+            <div class="card-body">
+              <h5 class="card-title">Multivitamínico</h5>
+              <p class="card-text">Complejo vitamínico para tu salud y bienestar diario.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="imagenes/suple6.png" class="card-img-top" alt="Omega 3">
+            <div class="card-body">
+              <h5 class="card-title">Omega 3</h5>
+              <p class="card-text">Mejora la salud cardiovascular y cognitiva.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 7 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="imagenes/suple7.png" class="card-img-top" alt="Accesorios de gimnasio">
+            <div class="card-body">
+              <h5 class="card-title">Carnitech Proteine</h5>
+              <p class="card-text">Proporciona ganancia de peso y masa muscular.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 8 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="imagenes/suple8.png" class="card-img-top" alt="Ropa deportiva">
+            <div class="card-body">
+              <h5 class="card-title">Wey Protreine Vainilla</h5>
+              <p class="card-text">Proporciona una recuperación muscular rapida.</p>
+              <a href="#" class="btn btn-primary w-100 add-to-cart">Añadir al carrito</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner -->
+  <section class="banner text-center py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold">Los Mejores Productos Para Ti</h2>
+      <p>Seleccionamos lo mejor en nutrición deportiva para que alcances tus metas.</p>
+      <img src="/imagenes/portada05.webp" class="img-fluid rounded shadow" alt="Nutrición deportiva">
+    </div>
+  </section>
+
+  <!-- Testimonios en formato normal, sin carrusel -->
+  <section class="testimonios py-5" style="background: #f2f2f2;">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">Esto Dicen Nuestros Clientes</h2>
+      </div>
+      <div class="row justify-content-center g-4">
+        <div class="col-md-4">
+          <div class="bg-white rounded-4 shadow-sm p-4 h-100 text-center">
+            <h5>Creatina</h5>
+            <div class="text-warning mb-2">★★★★★</div>
+            <p class="mb-3">"Mejoró mi rendimiento y recuperación. ¡Muy recomendada!"</p>
+            <p class="mb-0 fw-bold">- Miguel</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white rounded-4 shadow-sm p-4 h-100 text-center">
+            <h5>BCAA</h5>
+            <div class="text-warning mb-2">★★★★★</div>
+            <p class="mb-3">"Me ayudan a mantener mi energía durante entrenamientos intensos."</p>
+            <p class="mb-0 fw-bold">- Andrea</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white rounded-4 shadow-sm p-4 h-100 text-center">
+            <h5>Pre-Workout</h5>
+            <div class="text-warning mb-2">★★★★★</div>
+            <p class="mb-3">"El impulso que necesito para cada sesión. ¡No lo cambio por nada!"</p>
+            <p class="mb-0 fw-bold">- Luis</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white rounded-4 shadow-sm p-4 h-100 text-center">
+            <h5>Multivitamínico</h5>
+            <div class="text-warning mb-2">★★★★★</div>
+            <p class="mb-3">"Me siento con más energía y vitalidad cada día."</p>
+            <p class="mb-0 fw-bold">- Carla</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white rounded-4 shadow-sm p-4 h-100 text-center">
+            <h5>Omega 3</h5>
+            <div class="text-warning mb-2">★★★★★</div>
+            <p class="mb-3">"Mi salud cardiovascular ha mejorado notablemente."</p>
+            <p class="mb-0 fw-bold">- Juan</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white rounded-4 shadow-sm p-4 h-100 text-center">
+            <h5>Carnitech Proteine</h5>
+            <div class="text-warning mb-2">★★★★★</div>
+            <p class="mb-3">"Ideal para ganar masa muscular de forma rápida."</p>
+            <p class="mb-0 fw-bold">- Sofía</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+<section class="Contacto py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Contáctanos</h2>
+      <p class="text-muted">¿Tienes dudas? Escríbenos y te responderemos lo antes posible.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form id="contact-form" class="bg-light p-4 rounded shadow-sm">
+          <input class="form-control mb-3" name="user_name" placeholder="Nombre Completo" type="text" required>
+          <input class="form-control mb-3" name="user_email" placeholder="Email" type="email" required>
+          <textarea class="form-control mb-3" name="message" placeholder="Mensaje" rows="3" required></textarea>
+          <button class="btn btn-primary w-100" type="submit">Enviar Mensaje</button>
+        </form>
+        <p id="form-status" class="text-center mt-3"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    // Reemplaza "YOUR_PUBLIC_KEY" con tu clave pública real de EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY");
+  })();
+
+  // Capturamos el evento submit del formulario
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita que se recargue la página
+
+    // Enviamos el formulario usando EmailJS
+    emailjs.sendForm("service_z3274rc", "template_contacto", this) // <--- Aquí pones tu Template ID
+      .then(function() {
+        document.getElementById("form-status").innerHTML =
+          "<span class='text-success'>✅ Mensaje enviado con éxito</span>";
+      }, function(error) {
+        document.getElementById("form-status").innerHTML =
+          "<span class='text-danger'>❌ Error al enviar: " + JSON.stringify(error) + "</span>";
+      });
+  });
+</script>
+
+
+
+  <!-- Footer Bootstrap -->
+  <footer class="bg-light mt-5 border-top">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Links Importantes</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Politicas de privacidad</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Politicas de Cokies</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terminos y Condiciones</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Preguntas frecuentes</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Libro de Reclamaciones</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Categorias</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Bienestar y Salud</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Energia</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Ganancia Muscular</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Perdida de Peso</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Promociones</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2 mb-3">
+          <h5>Atencion y Soporte</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Comunicate con Nosotros:</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">987654321 - 945672356</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Nosotros</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Conviertete en Distribuidor</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 offset-md-2 mb-3">
+          <form>
+
+          </form>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center pt-3 mt-3 border-top">
+        <p class="mb-0 text-muted">© 2025 FitBoost. Todos los derechos reservados.</p>
+        <ul class="list-unstyled d-flex mb-0">
+          <li class="ms-3"><a class="text-dark" href="#"><i class="bi bi-instagram fs-4"></i></a></li>
+          <li class="ms-3"><a class="text-dark" href="#"><i class="bi bi-facebook fs-4"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Carrito de compras -->
+  <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-light">
+        <div class="modal-header border-0">
+          <h2 class="modal-title fw-bold w-100 text-center" id="modalCarritoLabel">Formulario de pago</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          
+          <!-- Mensaje de éxito -->
+          <div id="successMessage" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+            <i class="bi bi-check-circle"></i> <strong>¡Compra realizada con éxito!</strong>
+            <p id="successText"></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+
+          <!-- Mensaje de error -->
+          <div id="errorMessage" class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+            <i class="bi bi-exclamation-circle"></i> <strong>Error:</strong>
+            <p id="errorText"></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="row" id="formContainer">
+            <div class="col-md-7">
+              <h4 class="mb-3 fw-bold">Dirección de Envio</h4>
+              <form id="paymentForm">
+                <div class="row mb-3">
+                  <div class="col">
+                    <label class="form-label">Nombres</label>
+                    <input type="text" name="nombres" class="form-control" required>
+                  </div>
+                  <div class="col">
+                    <label class="form-label">Apellidos</label>
+                    <input type="text" name="apellidos" class="form-control" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nombre de usuario</label>
+                  <div class="input-group">
+                    <span class="input-group-text">@</span>
+                    <input type="text" name="usuario" class="form-control" placeholder="Nombre de usuario" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Correo electrónico <span class="text-muted">(opcional)</span></label>
+                  <input type="email" name="email" class="form-control" placeholder="tu@ejemplo.com">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">DIRECCIÓN</label>
+                  <input type="text" name="direccion" class="form-control" placeholder="1234 Calle Principal" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Dirección 2 <span class="text-muted">(Opcional)</span></label>
+                  <input type="text" name="direccion2" class="form-control" placeholder="Apartamento o suite">
+                </div>
+
+                <div class="row g-3 mb-3">
+                <!-- País -->
+                <div class="col-md-4">
+                  <label for="pais" class="form-label">País</label>
+                  <select id="pais" name="pais" class="form-select" required>
+                    <option value="" selected disabled>Seleccione un país...</option>
+                    <option value="Perú">Perú</option>
+                    <option value="México">México</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="España">España</option>
+                  </select>
+                </div>
+
+                <!-- Estado -->
+                <div class="col-md-4">
+                  <label for="estado" class="form-label">Estado / Provincia</label>
+                  <select id="estado" name="estado" class="form-select" required>
+                    <option value="" selected disabled>Seleccione un estado...</option>
+                    <!-- Aquí puedes cargar dinámicamente según el país -->
+                    <option value="Lima">Lima</option>
+                    <option value="Cusco">Cusco</option>
+                    <option value="Arequipa">Arequipa</option>
+                  </select>
+                </div>
+
+                <!-- Código Postal -->
+                <div class="col-md-4">
+                  <label for="codigoPostal" class="form-label">Código Postal</label>
+                  <input 
+                    type="text" 
+                    id="codigoPostal" 
+                    name="codigoPostal" 
+                    class="form-control" 
+                    placeholder="Ej: 15001" 
+                    maxlength="10" 
+                    required>
+                </div>
+              </div>
+
+                <div class="form-check mb-2">
+                  <input type="checkbox" class="form-check-input" id="direccionIgual">
+                  <label class="form-check-label" for="direccionIgual">La dirección de envío es la misma que mi dirección de facturación.</label>
+                </div>
+                <div class="form-check mb-4">
+                  <input type="checkbox" class="form-check-input" id="guardarInfo">
+                  <label class="form-check-label" for="guardarInfo">Guarde esta información para la próxima vez.</label>
+                </div>
+                <hr>
+
+                <!-- Métodos de Pago -->
+                <div class="mb-3">
+                  <label class="mb-3 fw-bold">Método de Pago</label>
+
+                  <!-- Visa -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="visa" value="visa" checked>
+                    <label class="form-check-label" for="visa">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style="height:20px;">
+                    </label>
+                  </div>
+
+                  <!-- Pago en efectivo -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="efectivo" value="efectivo">
+                    <label class="form-check-label" for="efectivo">
+                      <i class="bi bi-cash-coin text-success"></i> Pago en efectivo
+                    </label>
+                  </div>
+
+                  <!-- Yape -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="yape" value="yape">
+                    <label class="form-check-label" for="yape">
+                      <img src="/imagenes/yape.png" alt="Yape" style="height:20px;"> Yape
+                    </label>
+                  </div>
+
+                  <!-- Plin -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="plin" value="plin">
+                    <label class="form-check-label" for="plin">
+                      <img src="/imagenes/plin.png" alt="Plin" style="height:20px;"> Plin
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Datos de Tarjeta -->
+                <div id="tarjetaDatos">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="nombreTarjeta" class="form-label">Nombre en la tarjeta</label>
+                      <input type="text" id="nombreTarjeta" class="form-control" placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+                      <input type="text" id="numeroTarjeta" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-3">
+                      <label for="vencimiento" class="form-label">Vencimiento</label>
+                      <input type="text" id="vencimiento" class="form-control" placeholder="MM/AA">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="cvv" class="form-label">CVV</label>
+                      <input type="text" id="cvv" class="form-control" placeholder="123">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Datos Yape/Plin -->
+                <div id="celularDatos" style="display:none;">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                          <label for="numeroCelular" class="form-label">Número de celular</label>
+                          <input 
+                            type="text" 
+                            id="numeroCelular" 
+                            class="form-control" 
+                            value="987654321" 
+                            readonly>
+                          </input>
+                          <small class="text-muted">Número asociado a Yape o Plin</small>
+                      </div>
+                    </div>
+                </div>
+
+                <script>
+                  // Mostrar/ocultar según método de pago
+                  const radios = document.querySelectorAll('input[name="pago"]');
+                  const tarjetaDatos = document.getElementById('tarjetaDatos');
+                  const celularDatos = document.getElementById('celularDatos');
+
+                  radios.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                      if (radio.value === 'visa') {
+                        tarjetaDatos.style.display = 'block';
+                        celularDatos.style.display = 'none';
+                      } else if (radio.value === 'yape' || radio.value === 'plin') {
+                        tarjetaDatos.style.display = 'none';
+                        celularDatos.style.display = 'block';
+                      } else {
+                        tarjetaDatos.style.display = 'none';
+                        celularDatos.style.display = 'none';
+                      }
+                    });
+                  });
+
+                  // Enviar formulario con AJAX
+                  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Obtener total del carrito
+                    const cartTotal = document.querySelector('.list-group-item:last-child .fw-bold:last-child');
+                    const totalAmount = cartTotal ? cartTotal.textContent.replace('$', '').trim() : '0';
+                    document.getElementById('totalAmount').value = totalAmount;
+                    
+                    // Obtener detalles de productos del carrito
+                    const productItems = document.querySelectorAll('.list-group-item');
+                    let products = [];
+                    productItems.forEach((item, index) => {
+                      if (index < productItems.length - 2) {
+                        const name = item.querySelector('h6') ? item.querySelector('h6').textContent : '';
+                        const price = item.querySelector('.text-muted:last-child') ? item.querySelector('.text-muted:last-child').textContent : '';
+                        if (name && price) {
+                          products.push(name + ' - ' + price);
+                        }
+                      }
+                    });
+                    document.getElementById('productDetails').value = products.join(' | ');
+
+                    // Enviar datos con fetch
+                    const formData = new FormData(this);
+                    
+                    fetch('/orders/create', {
+                      method: 'POST',
+                      body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                      if (data.success) {
+                        // Mostrar mensaje de éxito
+                        document.getElementById('successMessage').classList.remove('d-none');
+                        document.getElementById('successText').textContent = data.message + ' (ID: #ORD-' + data.orderId + ')';
+                        
+                        // Ocultar formulario
+                        document.getElementById('formContainer').style.display = 'none';
+                        
+                        // Redirigir a "Ver Pedidos" después de 3 segundos
+                        setTimeout(() => {
+                          window.location.href = '/cliente/compras';
+                        }, 3000);
+                      } else {
+                        document.getElementById('errorMessage').classList.remove('d-none');
+                        document.getElementById('errorText').textContent = data.message;
+                      }
+                    })
+                    .catch(error => {
+                      document.getElementById('errorMessage').classList.remove('d-none');
+                      document.getElementById('errorText').textContent = 'Error: ' + error.message;
+                    });
+                  });
+                </script>
+
+                <!-- Campos ocultos para totalAmount y productDetails -->
+                <input type="hidden" id="totalAmount" name="totalAmount" value="60">
+                <input type="hidden" id="productDetails" name="productDetails" value="">
+
+                <button type="submit" class="btn btn-primary w-100 mb-2">Realizar Pedido</button>
+              </form>
+            </div>
+            <div class="col-md-5">
+              <div class="d-flex align-items-center mb-3">
+                <h4 class="fw-bold text-primary mb-0">Tu carrito</h4>
+                <span class="badge bg-primary ms-2" style="font-size:1.2rem;">3</span>
+              </div>
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0 fw-bold">Nombre del producto</h6>
+                    <small class="text-muted">Breve descripción</small>
+                  </div>
+                  <span class="text-muted">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0 fw-bold">Segundo producto</h6>
+                    <small class="text-muted">Breve descripción</small>
+                  </div>
+                  <span class="text-muted">$8</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0 fw-bold">Tercer punto</h6>
+                    <small class="text-muted">Breve descripción</small>
+                  </div>
+                  <span class="text-muted">$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                  <div class="text-success">
+                    <h6 class="my-0 fw-bold">Código promocional</h6>
+                    <small>CÓDIGO DE EJEMPLO</small>
+                  </div>
+                  <span class="text-success">−$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="fw-bold">Total (USD)</span>
+                  <span class="fw-bold">$20</span>
+                </li>
+              </ul>
+              <form class="card p-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Código promocional">
+                  <button type="submit" class="btn btn-secondary">Canjear</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+<!-- Puedes poner esto al final del div .container de la navbar -->
+
+</html>

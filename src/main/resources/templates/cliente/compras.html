@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Compras - FitBoost</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #eeeeee;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 230px;
+            height: 100vh;
+            background-color: #f5f5f5;
+            border-right: 1px solid #d5d5d5;
+            overflow-y: auto;
+            padding-top: 20px;
+            z-index: 1000;
+        }
+
+        .sidebar-section {
+            padding: 0 15px;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-left: 15px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 6px;
+            color: #5b9bd5;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 0;
+            transition: background-color 0.2s, color 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .sidebar-item:hover {
+            background-color: #e8e8e8;
+            color: #5b9bd5;
+        }
+
+        .sidebar-item.active {
+            background-color: #e8e8f0;
+            color: #5b9bd5;
+        }
+
+        .sidebar-item i {
+            margin-right: 12px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 230px;
+            padding: 40px;
+            min-height: 100vh;
+            background-color: #eeeeee;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333333;
+        }
+
+        .page-title i {
+            font-size: 2.5rem;
+            color: #5b9bd5;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-action {
+            padding: 8px 18px;
+            border: 1px solid #cccccc;
+            background-color: white;
+            color: #666666;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-action:hover {
+            background-color: #f8f8f8;
+            border-color: #999999;
+            color: #5b9bd5;
+        }
+
+        .btn-action i {
+            margin-right: 6px;
+        }
+
+        .chart-container {
+            background-color: white;
+            border-radius: 0;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        .chart-canvas {
+            height: 300px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #d5d5d5;
+        }
+
+        .table th {
+            color: #666666;
+            font-weight: 700;
+            padding: 15px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #d5d5d5;
+        }
+
+        .table td {
+            padding: 15px;
+            color: #555555;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .badge {
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 0;
+        }
+
+        .btn-table-action {
+            padding: 6px 12px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .btn-table-action:hover {
+            background-color: #00acc1;
+            color: white;
+        }
+
+        .alert {
+            border-radius: 0;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 0;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-label">CLIENTE</div>
+            <a href="/cliente/compras" class="sidebar-item active">
+                <i class="bi bi-bag"></i>
+                <span>Mis Pedidos</span>
+            </a>
+            <a href="/cliente/favoritos" class="sidebar-item">
+                <i class="bi bi-heart"></i>
+                <span>Favoritos</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-title">
+                <i class="bi bi-bag"></i>
+                Mis Compras
+            </div>
+        </div>
+
+        <div th:if="${success}" class="alert alert-success alert-dismissible fade show">
+            <i class="bi bi-check-circle"></i> ¡Pedido realizado con éxito!
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Section Title -->
+        <div class="section-title">Mis Pedidos</div>
+
+        <!-- Table Container -->
+        <div class="table-container">
+            <div th:if="${orders.isEmpty()}" class="alert alert-info">
+                <i class="bi bi-info-circle"></i> No tienes pedidos aún.
+            </div>
+
+            <div th:if="${!orders.isEmpty()}">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID Orden</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Fecha Entrega Est.</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="order : ${orders}">
+                            <td>
+                                <strong>#ORD-<span th:text="${order.id}"></span></strong>
+                            </td>
+                            <td th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm')}"></td>
+                            <td>
+                                <strong th:text="'$' + ${#numbers.formatDecimal(order.totalAmount, 1, 2)}"></strong>
+                            </td>
+                            <td>
+                                <span th:if="${order.status == 'Entregado'}" class="badge bg-success" th:text="${order.status}"></span>
+                                <span th:if="${order.status == 'En Tránsito'}" class="badge bg-warning text-dark" th:text="${order.status}"></span>
+                                <span th:if="${order.status == 'Pendiente'}" class="badge bg-secondary" th:text="${order.status}"></span>
+                            </td>
+                            <td th:text="${#temporals.format(order.estimatedDeliveryDate, 'dd/MM/yyyy')}"></td>
+                            <td>
+                                <button class="btn-table-action" data-bs-toggle="modal" th:attr="data-bs-target='#detalle' + ${order.id}">
+                                    <i class="bi bi-eye"></i> Ver
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Modal detalle de la orden (se genera por cada order) -->
+                        <div th:each="order : ${orders}" th:id="${'detalle' + order.id}" class="modal fade" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Boleta de Compra - <strong th:text="${'#ORD-' + order.id}"></strong></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Datos del Cliente</h6>
+                                                <p th:if="${order.user != null}"><strong>Nombre:</strong>
+                                                    <span th:text="${order.user.firstName != null ? (order.user.firstName + (order.user.lastName != null ? ' ' + order.user.lastName : '')) : order.user.username}"></span>
+                                                </p>
+                                                <p th:if="${order.user != null and order.user.email != null}"><strong>Correo:</strong> <span th:text="${order.user.email}"></span></p>
+                                                <p th:if="${order.shippingAddress != null}"><strong>Dirección:</strong> <span th:text="${order.shippingAddress}"></span></p>
+                                                <p><strong>Fecha:</strong> <span th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm')}"></span></p>
+                                                <p><strong>Estado:</strong> <span th:text="${order.status}"></span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="fw-bold">Productos</h6>
+
+                                                <!-- Si backend guarda detalles en productDetails (texto o JSON), mostrarlo -->
+                                                <div th:if="${order.productDetails != null}">
+                                                    <pre class="small bg-light p-2" th:text="${order.productDetails}"></pre>
+                                                </div>
+
+                                                <div th:if="${order.productDetails == null}">
+                                                    <p class="text-muted">No hay detalles de productos disponibles para esta orden.</p>
+                                                </div>
+
+                                                <hr>
+                                                <p class="text-end mb-0"><strong>Total:</strong> <span th:text="${'$' + #numbers.formatDecimal(order.totalAmount,1,2)}"></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary" onclick="window.print()">Imprimir boleta</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sidebar items click
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

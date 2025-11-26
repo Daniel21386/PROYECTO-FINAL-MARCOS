@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - FitBoost</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            max-width: 500px;
+            width: 100%;
+        }
+        .register-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .register-header h2 {
+            margin: 0;
+            font-weight: bold;
+        }
+        .register-body {
+            padding: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .btn-register {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .btn-register:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .alert {
+            border-radius: 8px;
+        }
+        .form-control.is-invalid {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 0.15rem rgba(231,76,60,0.08);
+        }
+        .invalid-feedback.custom {
+            display: block;
+            color: #e74c3c;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div class="register-container">
+    <div class="register-header">
+        <h2><i class="bi bi-person-plus"></i> Crear Cuenta</h2>
+    </div>
+    <div class="register-body">
+        <div th:if="${param.success}" class="alert alert-success">
+            Cuenta creada exitosamente. <a href="/login">Inicia sesión</a>
+        </div>
+
+        <form method="post" action="/api/users/register" novalidate>
+            <div class="form-group">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                  <input type="text" class="form-control" id="username" name="username" required minlength="2"
+                      pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\\s'\\-]{2,}"
+                      title="Usa al menos 2 letras. Solo letras, espacios, apóstrofes o guiones."
+                      placeholder="Ej: Juan Pérez">
+                  <div class="invalid-feedback custom" id="usernameFeedback"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="Ej: juan@ejemplo.com">
+                <div class="invalid-feedback custom" id="emailFeedback"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" required minlength="6" placeholder="Mínimo 6 caracteres">
+                <div class="invalid-feedback custom" id="passwordFeedback"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required placeholder="Repite tu contraseña">
+                <div class="invalid-feedback custom" id="confirmFeedback"></div>
+            </div>
+
+            <button type="submit" class="btn btn-register">Registrarse</button>
+        </form>
+
+        <div class="login-link">
+            ¿Ya tienes cuenta? <a href="/login" class="text-primary">Inicia sesión aquí</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Validación cliente: mostrar mensajes en línea debajo de cada campo
+        (function() {
+        const form = document.querySelector('form');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const pwdInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirmPassword');
+
+        const usernameFeedback = document.getElementById('usernameFeedback');
+        const emailFeedback = document.getElementById('emailFeedback');
+        const passwordFeedback = document.getElementById('passwordFeedback');
+        const confirmFeedback = document.getElementById('confirmFeedback');
+
+        const usernameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s'\-]{2,}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function clearFieldError(input, feedbackEl) {
+            input.classList.remove('is-invalid');
+            feedbackEl.textContent = '';
+        }
+
+        function setFieldError(input, feedbackEl, msg) {
+            input.classList.add('is-invalid');
+            feedbackEl.textContent = msg;
+        }
+
+        usernameInput.addEventListener('input', () => clearFieldError(usernameInput, usernameFeedback));
+        emailInput.addEventListener('input', () => clearFieldError(emailInput, emailFeedback));
+        pwdInput.addEventListener('input', () => clearFieldError(pwdInput, passwordFeedback));
+        confirmInput.addEventListener('input', () => clearFieldError(confirmInput, confirmFeedback));
+
+        form.addEventListener('submit', function(e) {
+            let hasError = false;
+
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
+            const pwd = pwdInput.value;
+            const confirm = confirmInput.value;
+
+            // Username
+            if (!usernameRegex.test(username)) {
+                setFieldError(usernameInput, usernameFeedback, 'Por favor, indique un usuario válido (mínimo 2 letras).');
+                hasError = true;
+            }
+
+            // Email
+            if (!emailRegex.test(email)) {
+                setFieldError(emailInput, emailFeedback, 'Por favor, indique un correo electrónico válido.');
+                hasError = true;
+            }
+
+            // Password length
+            if (pwd.length < 6) {
+                setFieldError(pwdInput, passwordFeedback, 'La contraseña debe tener al menos 6 caracteres.');
+                hasError = true;
+            }
+
+            // Password match
+            if (pwd !== confirm) {
+                setFieldError(confirmInput, confirmFeedback, 'Las contraseñas no coinciden.');
+                hasError = true;
+            }
+
+            if (hasError) {
+                e.preventDefault();
+                // Focus on first invalid field
+                const firstInvalid = form.querySelector('.is-invalid');
+                if (firstInvalid) firstInvalid.focus();
+            }
+        });
+
+        // Mostrar errores provenientes del servidor (parámetro ?error=...)
+        try {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('error')) {
+                const err = params.get('error');
+                switch (err) {
+                    case 'user_exists':
+                        setFieldError(usernameInput, usernameFeedback, 'El nombre de usuario ya existe.');
+                        usernameInput.focus();
+                        break;
+                    case 'email_exists':
+                        setFieldError(emailInput, emailFeedback, 'El correo ya está registrado.');
+                        emailInput.focus();
+                        break;
+                    case 'password_mismatch':
+                        setFieldError(confirmInput, confirmFeedback, 'Las contraseñas no coinciden.');
+                        confirmInput.focus();
+                        break;
+                    case 'invalid_input':
+                        setFieldError(usernameInput, usernameFeedback, 'Error en los datos del formulario. Revisa los campos.');
+                        usernameInput.focus();
+                        break;
+                    default:
+                        // desconocido: mostrar en la parte superior como fallback
+                        break;
+                }
+                // limpiamos el parámetro de la URL para evitar que vuelva a mostrarse al recargar
+                const url = new URL(window.location.href);
+                url.searchParams.delete('error');
+                history.replaceState(null, '', url.pathname + url.search);
+            }
+        } catch (e) {
+            // no hacemos nada si URL no soportada
+        }
+    })();
+</script>
+</body>
+</html>

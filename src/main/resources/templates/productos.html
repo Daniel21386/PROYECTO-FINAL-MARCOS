@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - FitBoost</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/styleproductos.css">
+  <script src="/javascript/carrito.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+    <div class="container">
+      <a href="#" class="navbar-brand fw-bold"><span class="text-primary">Fit</span>Boost</a>
+      <form class="d-none d-lg-flex mx-auto w-50">
+        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar">
+        <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-star"
+        aria-controls="navbar-star" aria-expanded="false" aria-label="Menú de navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-star">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="/productos" class="nav-link active">Productos</a></li>
+          <li class="nav-item"><a href="/nosotros" class="nav-link">Nosotros</a></li>
+          <!-- Carrito de compras -->
+          <li class="nav-item ms-3">
+            <a href="#" class="nav-link position-relative" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+              <i class="bi bi-cart3 fs-4"></i>
+              <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                0
+                <span class="visually-hidden">productos en el carrito</span>
+              </span>
+            </a>
+          </li>
+
+          <!-- Icono de usuario con dropdown -->
+          <li class="nav-item dropdown ms-3">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle fs-3 me-2"></i>
+              <span id="nombreUsuario"></span>
+
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/cliente/compras"><i class="bi bi-bag"></i> Ver Pedidos</a></li>
+              <li><a class="dropdown-item" href="/cliente/perfil"><i class="bi bi-person"></i> Editar Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item text-danger" id="logout-btn">Cerrar sesión</button></li>
+            </ul>
+          </li>
+
+        </ul>
+        <!-- Barra de busqueda -->
+        <form class="d-lg-none mt-3">
+          <div class="input-group">
+            <input class="form-control" type="search" placeholder="Buscar..." aria-label="Buscar">
+            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <div class="sidebar-lateral">
+    <ul class="nav flex-column px-2">
+      <li class="nav-item mb-2">
+        <a class="nav-link active d-flex align-items-center sidebar-btn" data-section="bienestarSalud" href="#">
+          <i class="bi bi-heart-pulse me-2 fs-4"></i> Bienestar y Salud
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link d-flex align-items-center sidebar-btn" data-section="energia" href="#">
+          <i class="bi bi-lightning-charge me-2 fs-4"></i> Energía
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link d-flex align-items-center sidebar-btn" data-section="muscular" href="#">
+          <i class="bi bi-trophy me-2 fs-4"></i> Ganancia Muscular
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link d-flex align-items-center sidebar-btn" data-section="recuperacion" href="#">
+          <i class="bi bi-activity me-2 fs-4"></i> Recuperación Muscular
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link d-flex align-items-center sidebar-btn" data-section="peso" href="#">
+          <i class="bi bi-arrow-down-circle me-2 fs-4"></i> Pérdida de Peso
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link d-flex align-items-center sidebar-btn" data-section="promos" href="#">
+          <i class="bi bi-tag me-2 fs-4"></i> Promociones
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="contenido-principal">
+
+     <!-- Contenido principal -->
+  <div class="contenido-principal">
+
+
+
+  
+    <!-- Bienestar y Salud -->
+    <div id="bienestarSalud" class="contenido-section">
+      <h2 class="mb-4">Bienestar y Salud</h2>
+      <div class="row g-4">
+        <!-- Producto 1 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/suple1.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Bcaa 12000 ultimate 60 serv</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/165.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/180.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Bcaa 12000 ultimate 60 serv" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/aminoacidoLp.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Bcaa 8.0 level p 120 serv</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/175.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/185.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Bcaa 8.0 level p 120 serv" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/aminoacidoC.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Amino carnivor beef 300 tab</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/150.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/160.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Amino carnivor beef 300 tab" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 4 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/aminoacidoun.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Bcaa 6000 universe 70 serv</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/110.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/125.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Bcaa 6000 universe 70 serv" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Producto 6 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/vitamina1.jpeg" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Multi pro 90cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/105.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/115.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Amino charge 30serv" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 6 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/vitamina3.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Optimen 90 cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/125.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/130.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Multi pro 90cap" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 7 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/vitamina4.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Opti women 120 cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/145.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/155.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Optimen 90 cap" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 8 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/colageno1.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">omega 3 windmill 60 cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/170.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/185.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Opti women 120 cap" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 9 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/aminoacidocf.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Amino charge 30serv</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/150.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/165.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Collagen protein 1kg" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 10 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen2.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Collagen protein 1kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/65.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/75.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Collagen protein 1kg" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 11 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen4.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Omega 3 ultimate 90cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/90.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/100.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Omega 3 ultimate 90cap" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 12 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen3.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Omega 3 nutrabio 150cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/115.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/125.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Omega 3 nutrabio 150cap" data-precio="30">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/omega3.jpeg" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Omega-3</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/75.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/100.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Omega-3 Aceite de Pescado" data-precio="25">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/colageno.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">COLLAGEN PRO</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/28.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/32.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart" style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="COLLAGEN PRO" data-precio="28">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Energía -->
+    <div id="energia" class="contenido-section d-none">
+      <h2 class="mb-4">⚡ Energía</h2>
+      <div class="row g-4">
+        <!-- Producto 1 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen5.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Pre-entreno</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/105.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/115.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Pre-entreno" data-precio="22">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen6.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Pre boost 400g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/110.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/120.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Pre boost 400g" data-precio="22">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen7.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Blood and guts </h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/115.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/125.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Blood and guts 40 serv" data-precio="22">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 4 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+             <img src="imagenes/imagen8.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Advance on 20 serv</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/120.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/130.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Advance on 20 serv" data-precio="22">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 5 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen9.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;"> Pre-entreno Venom 300g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/135.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/145.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Venom 40 serv" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 6 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen10.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">100% creatine un 250g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/70.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/80.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="100% creatine un 250g" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 7 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen11.png" class="card-img-top producto-img mx-auto" alt="8 Suplementos de Gym Multivitamínicos">
+              
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina level pro 250g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/75.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/85.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina level pro 250g" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 8 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen12.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina kevin levrone 300gr</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/75.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/85.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina kevin levrone 300gr" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 9 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen14.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina dorian yates 300g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/80.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/95.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina dorian yates 300g" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 10 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen19.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina my protein 250g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/85.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/95.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina my protein 250g" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 11 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen15.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina nutrex 300g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/135.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/145.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Bebida Energética" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 12 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen16.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina dragon pharma 300g</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/95.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/105.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina dragon pharma 300g" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 13 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen17.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina ultimate nut 300gr</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/99.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/105.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina ultimate nut 300gr" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 14 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen20.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina nutrex 1kg 200 servicios</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/205.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/215.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina nutrex 1kg" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 15 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen21.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina my protein 1kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/210.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/220.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina my protein 1kg" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 16 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen22.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina ultimate nut 1kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/135.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/145.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina ultimate nut 1kg" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Producto  17 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imagen23.png" class="card-img-top producto-img mx-auto" alt="Bebida Energética"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Creatina dragon pharma 1kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/220.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/230.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina dragon 1kg" data-precio="10">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ganancia Muscular -->
+    <div id="muscular" class="contenido-section d-none">
+      <h2 class="mb-4">💪 Ganancia Muscular</h2>
+      <div class="row g-4">
+        <!-- Producto 1 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img1.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Whey pro 1.100 kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/70.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/85.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Whey pro 1.100 kg" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img2.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Fem pro 1.100 kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/85.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/95.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Fem pro 1.100 kg" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img4.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Prostar whey 2lbs</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/155.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/170.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Prostar whey 2lbs" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 4 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img5.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Whey gold pro 6.6lb</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/199 .00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/210.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 5 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img6.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Gold standard whey 2lbs</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/200.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/210.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 6 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img8.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Universe Nutricion Whey pro 5 kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/150.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/165.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 7 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img9.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Ultimate Nutrition Prostar whey 5.3lbs</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/310.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/320.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 8 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img10.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Impact whey protein 2.5 kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/350.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/360.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 9----/// -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img12.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Mutant whey 5lbs</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/270.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/285.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 10 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/img11.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Elite whey 5lb</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/340.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/355.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 11 iso-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imag1.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Iso whey 1.1kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/120.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/135.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 12 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imag3.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Proteína Whey</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/35.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/40.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 13 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imag8.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Iso gold whey 1.1 kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/130.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/145.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 14 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imag4.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Iso fit nutrex 2 lb</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/175.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/185.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 15 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imag5.png" class="card-img-top producto-img mx-auto" alt="Proteína Whey"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Iso cool 2 lb</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/185.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/195.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Proteína Whey" data-precio="35">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/imag6.png" class="card-img-top producto-img mx-auto" alt="Creatina"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Iso xp 1kg</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/220.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/230.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Creatina" data-precio="20">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recuperacion muscular-->
+    <div id="recuperacion" class="contenido-section d-none">
+  <h2 class="mb-4">🩹 Recuperación Muscular</h2>
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm producto-card text-center p-3">
+        <img src="imagenes/recuperacion2.jpg" class="card-img-top producto-img mx-auto" alt="BCAA"
+          style="width: 70%; height: 180px; object-fit: contain;">
+        <div class="card-body p-0 mt-3">
+          <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Magnesio SmartB x 400 gr</h5>
+          <div class="mb-2">
+            <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/106.00</span>
+            <span class="text-muted ms-2" style="text-decoration: line-through;">S/121.00</span>
+          </div>
+          <button class="btn w-100 fw-bold text-white add-to-cart"
+            style="background:#0d6efd; border-radius: 8px;"
+            data-nombre="BCAA" data-precio="18">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 1 -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm producto-card text-center p-3">
+        <img src="imagenes/recuperacion3.jpg" class="card-img-top producto-img mx-auto" alt="BCAA"
+          style="width: 70%; height: 180px; object-fit: contain;">
+        <div class="card-body p-0 mt-3">
+          <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Citrato de Magnesio Sorenu 250gr</h5>
+          <div class="mb-2">
+            <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/65.00</span>
+            <span class="text-muted ms-2" style="text-decoration: line-through;">S/88.00</span>
+          </div>
+          <button class="btn w-100 fw-bold text-white add-to-cart"
+            style="background:#0d6efd; border-radius: 8px;"
+            data-nombre="BCAA" data-precio="18">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 2-->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm producto-card text-center p-3">
+        <img src="imagenes/recuperacion1.jpg" class="card-img-top producto-img mx-auto" alt="BCAA"
+          style="width: 70%; height: 180px; object-fit: contain;">
+        <div class="card-body p-0 mt-3">
+          <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Tinku Citrato de Magnesio con camu camu</h5>
+          <div class="mb-2">
+            <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/70.00</span>
+            <span class="text-muted ms-2" style="text-decoration: line-through;">S/47.00</span>
+          </div>
+          <button class="btn w-100 fw-bold text-white add-to-cart"
+            style="background:#0d6efd; border-radius: 8px;"
+            data-nombre="BCAA" data-precio="18">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 3-->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm producto-card text-center p-3">
+        <img src="imagenes/recuperacion4.jpg" class="card-img-top producto-img mx-auto" alt="BCAA"
+          style="width: 70%; height: 180px; object-fit: contain;">
+        <div class="card-body p-0 mt-3">
+          <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Vitesol B6 Cápsulas blandas</h5>
+          <div class="mb-2">
+            <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/30.00</span>
+            <span class="text-muted ms-2" style="text-decoration: line-through;">S/43.00</span>
+          </div>
+          <button class="btn w-100 fw-bold text-white add-to-cart"
+            style="background:#0d6efd; border-radius: 8px;"
+            data-nombre="BCAA" data-precio="18">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 5-->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm producto-card text-center p-3">
+        <img src="imagenes/recuperacion5.jpg" class="card-img-top producto-img mx-auto" alt="BCAA"
+          style="width: 70%; height: 180px; object-fit: contain;">
+        <div class="card-body p-0 mt-3">
+          <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Vitathon Gragea 50 comprimidos</h5>
+          <div class="mb-2">
+            <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/25.00</span>
+            <span class="text-muted ms-2" style="text-decoration: line-through;">S/37.00</span>
+          </div>
+          <button class="btn w-100 fw-bold text-white add-to-cart"
+            style="background:#0d6efd; border-radius: 8px;"
+            data-nombre="BCAA" data-precio="18">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Producto 6 -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm producto-card text-center p-3">
+        <img src="imagenes/recuperacion6.jpg" class="card-img-top producto-img mx-auto" alt="Glutamina"
+          style="width: 70%; height: 180px; object-fit: contain;">
+        <div class="card-body p-0 mt-3">
+          <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">B12 Ankermann 300 Comprimido</h5>
+          <div class="mb-2">
+            <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/23.00</span>
+            <span class="text-muted ms-2" style="text-decoration: line-through;">S/34.00</span>
+          </div>
+          <button class="btn w-100 fw-bold text-white add-to-cart"
+            style="background:#0d6efd; border-radius: 8px;"
+            data-nombre="Glutamina" data-precio="16">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Pérdida de Peso -->
+    <div id="peso" class="contenido-section d-none">
+      <h2 class="mb-4">🔥 Pérdida de Peso</h2>
+      <div class="row g-4">
+        <!-- Producto 1 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/quemador  7.png" class="card-img-top producto-img mx-auto" alt="Termogénico"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Paquete xb x15u </h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/30.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/41.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Termogénico" data-precio="15">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/quemador6.png" class="card-img-top producto-img mx-auto" alt="Termogénico"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Xtreme nf 66 cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/30.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/41.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Termogénico" data-precio="15">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/quemador 5.png" class="card-img-top producto-img mx-auto" alt="Termogénico"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Paquete collagen fit x15u</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/30.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/41.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Termogénico" data-precio="15">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+         <!-- Producto 4 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/quemador8.png" class="card-img-top producto-img mx-auto" alt="Termogénico"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Gold levrolean 90 cap</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/30.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/41.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Termogénico" data-precio="15">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 5 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm producto-card text-center p-3">
+            <img src="imagenes/quemador4.png" class="card-img-top producto-img mx-auto" alt="Sustituto de Comida"
+              style="width: 70%; height: 180px; object-fit: contain;">
+            <div class="card-body p-0 mt-3">
+              <h5 class="card-title fw-bold mb-2" style="font-size: 1.1rem;">Paquete xb x15u guarana</h5>
+              <div class="mb-2">
+                <span class="fw-bold text-primary" style="font-size: 1.3rem;">S/30.00</span>
+                <span class="text-muted ms-2" style="text-decoration: line-through;">S/45.00</span>
+              </div>
+              <button class="btn w-100 fw-bold text-white add-to-cart"
+                style="background:#0d6efd; border-radius: 8px;"
+                data-nombre="Sustituto de Comida" data-precio="12">
+                Añadir al carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promociones -->
+    <div id="promos" class="contenido-section d-none">
+      <h2 class="mb-4">🎉 Promociones</h2>
+      <div id="promosContainer" class="row g-4">
+        <!-- Promociones dinámicas cargadas por JS -->
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal Carrito de compras -->
+  <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-light">
+        <div class="modal-header border-0">
+          <h2 class="modal-title fw-bold w-100 text-center" id="modalCarritoLabel">Formulario de pago</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row">
+            <div class="col-md-7">
+              <h4 class="mb-3 fw-bold">Dirección de Envio</h4>
+              <form>
+                <div class="row mb-3">
+                  <div class="col">
+                    <label class="form-label">Nombres</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col">
+                    <label class="form-label">Apellidos</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nombre de usuario</label>
+                  <div class="input-group">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" placeholder="Nombre de usuario">
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Correo electrónico <span class="text-muted">(opcional)</span></label>
+                  <input type="email" class="form-control" placeholder="tu@ejemplo.com">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">DIRECCIÓN</label>
+                  <input type="text" class="form-control" placeholder="1234 Calle Principal">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Dirección 2 <span class="text-muted">(Opcional)</span></label>
+                  <input type="text" class="form-control" placeholder="Apartamento o suite">
+                </div>
+
+                <div class="row g-3 mb-3">
+                <!-- País -->
+                <div class="col-md-4">
+                  <label for="pais" class="form-label">País</label>
+                  <select id="pais" name="pais" class="form-select" required>
+                    <option value="" selected disabled>Seleccione un país...</option>
+                    <option value="pe">Perú</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                    <option value="cl">Chile</option>
+                    <option value="es">España</option>
+                  </select>
+                </div>
+
+                <!-- Estado -->
+                <div class="col-md-4">
+                  <label for="estado" class="form-label">Estado / Provincia</label>
+                  <select id="estado" name="estado" class="form-select" required>
+                    <option value="" selected disabled>Seleccione un estado...</option>
+                    <!-- Aquí puedes cargar dinámicamente según el país -->
+                    <option value="lima">Lima</option>
+                    <option value="cusco">Cusco</option>
+                    <option value="arequipa">Arequipa</option>
+                  </select>
+                </div>
+
+                <!-- Código Postal -->
+                <div class="col-md-4">
+                  <label for="codigoPostal" class="form-label">Código Postal</label>
+                  <input 
+                    type="text" 
+                    id="codigoPostal" 
+                    name="codigoPostal" 
+                    class="form-control" 
+                    placeholder="Ej: 15001" 
+                    maxlength="10" 
+                    required>
+                </div>
+              </div>
+
+                <div class="form-check mb-2">
+                  <input type="checkbox" class="form-check-input" id="direccionIgual">
+                  <label class="form-check-label" for="direccionIgual">La dirección de envío es la misma que mi dirección de facturación.</label>
+                </div>
+                <div class="form-check mb-4">
+                  <input type="checkbox" class="form-check-input" id="guardarInfo">
+                  <label class="form-check-label" for="guardarInfo">Guarde esta información para la próxima vez.</label>
+                </div>
+                <hr>
+
+                <!-- Métodos de Pago -->
+                <div class="mb-3">
+                  <label class="mb-3 fw-bold">Método de Pago</label>
+
+                  <!-- Visa -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="visa" value="visa" checked>
+                    <label class="form-check-label" for="visa">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style="height:20px;">
+                    </label>
+                  </div>
+
+                  <!-- Pago en efectivo -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="efectivo" value="efectivo">
+                    <label class="form-check-label" for="efectivo">
+                      <i class="bi bi-cash-coin text-success"></i> Pago en efectivo
+                    </label>
+                  </div>
+
+                  <!-- Yape -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="yape" value="yape">
+                    <label class="form-check-label" for="yape">
+                      <img src="/imagenes/yape.png" alt="Yape" style="height:20px;"> Yape
+                    </label>
+                  </div>
+
+                  <!-- Plin -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="pago" id="plin" value="plin">
+                    <label class="form-check-label" for="plin">
+                      <img src="/imagenes/plin.png" alt="Plin" style="height:20px;"> Plin
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Datos de Tarjeta -->
+                <div id="tarjetaDatos">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label for="nombreTarjeta" class="form-label">Nombre en la tarjeta</label>
+                      <input type="text" id="nombreTarjeta" class="form-control" placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+                      <input type="text" id="numeroTarjeta" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-3">
+                      <label for="vencimiento" class="form-label">Vencimiento</label>
+                      <input type="text" id="vencimiento" class="form-control" placeholder="MM/AA">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="cvv" class="form-label">CVV</label>
+                      <input type="text" id="cvv" class="form-control" placeholder="123">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Datos Yape/Plin -->
+                <div id="celularDatos" style="display:none;">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                          <label for="numeroCelular" class="form-label">Número de celular</label>
+                          <input 
+                            type="text" 
+                            id="numeroCelular" 
+                            class="form-control" 
+                            value="987654321" 
+                            readonly>
+                          </input>
+                          <small class="text-muted">Número asociado a Yape o Plin</small>
+                      </div>
+                    </div>
+                </div>
+
+                <script>
+                  // Mostrar/ocultar según método de pago
+                  const radios = document.querySelectorAll('input[name="pago"]');
+                  const tarjetaDatos = document.getElementById('tarjetaDatos');
+                  const celularDatos = document.getElementById('celularDatos');
+
+                  radios.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                      if (radio.value === 'visa') {
+                        tarjetaDatos.style.display = 'block';
+                        celularDatos.style.display = 'none';
+                      } else if (radio.value === 'yape' || radio.value === 'plin') {
+                        tarjetaDatos.style.display = 'none';
+                        celularDatos.style.display = 'block';
+                      } else {
+                        tarjetaDatos.style.display = 'none';
+                        celularDatos.style.display = 'none';
+                      }
+                    });
+                  });
+                </script>
+
+                <button type="submit" class="btn btn-primary w-100 mb-2">Realizar Pedido</button>
+              </form>
+            </div>
+            <div class="col-md-5">
+              <div class="d-flex align-items-center mb-3">
+                <h4 class="fw-bold text-primary mb-0">Tu carrito</h4>
+                <span class="badge bg-primary ms-2" style="font-size:1.2rem;">3</span>
+              </div>
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0 fw-bold">Nombre del producto</h6>
+                    <small class="text-muted">Breve descripción</small>
+                  </div>
+                  <span class="text-muted">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0 fw-bold">Segundo producto</h6>
+                    <small class="text-muted">Breve descripción</small>
+                  </div>
+                  <span class="text-muted">$8</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0 fw-bold">Tercer punto</h6>
+                    <small class="text-muted">Breve descripción</small>
+                  </div>
+                  <span class="text-muted">$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                  <div class="text-success">
+                    <h6 class="my-0 fw-bold">Código promocional</h6>
+                    <small>CÓDIGO DE EJEMPLO</small>
+                  </div>
+                  <span class="text-success">−$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="fw-bold">Total (USD)</span>
+                  <span class="fw-bold">$20</span>
+                </li>
+              </ul>
+              <form class="card p-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Código promocional">
+                  <button type="submit" class="btn btn-secondary">Canjear</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/javascript/productos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

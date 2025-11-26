@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Pedidos - FitBoost</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+    <meta th:if="${_csrf != null}" name="_csrf" th:content="${_csrf.token}" />
+    <meta th:if="${_csrf != null}" name="_csrf_header" th:content="${_csrf.headerName}" />
+    <style>
+        body { font-family: Arial, sans-serif; background:#f5f5f5; }
+        .main { margin: 30px auto; max-width: 1100px; }
+        .card { padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2><i class="bi bi-list-check"></i> Gestor de Pedidos</h2>
+            <div>
+                <a href="/logout" class="btn btn-outline-secondary">Cerrar sesión</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="mb-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>Revisa compras realizadas</strong>
+                </div>
+                <div>
+                    <select id="statusFilter" class="form-select form-select-sm" style="width:220px; display:inline-block;">
+                        <option value="">Todos los estados</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En Preparación">En Preparación</option>
+                        <option value="En Tránsito">En Tránsito</option>
+                        <option value="Entregado">Entregado</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pedido</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <!-- cargado por JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function fetchOrders() {
+            fetch('/api/admin/orders')
+                .then(r => r.json())
+                .then(orders => renderOrders(orders))
+                .catch(err => console.error('Error cargando órdenes:', err));
+        }
+
+        function renderOrders(orders) {
+            const tbody = document.getElementById('ordersBody');
+            const filter = document.getElementById('statusFilter').value;
+            tbody.innerHTML = '';
+            if (!orders || orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center">No hay órdenes</td></tr>';
+                return;
+            }
+            orders.forEach((o, idx) => {
+                if (filter && o.status !== filter) return;
+                const date = new Date(o.orderDate);
+                const fecha = isNaN(date) ? '' : date.toLocaleString('es-ES');
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${idx + 1}</td>
+                    <td>ORD-${String(o.id).padStart(3,'0')}</td>
+                    <td>${o.clientName || 'Sin nombre'}</td>
+                    <td>${fecha}</td>
+                    <td>$${parseFloat(o.totalAmount || 0).toFixed(2)}</td>
+                    <td>
+                        <select id="status-${o.id}" class="form-select form-select-sm">
+                            <option ${o.status === 'Pendiente' ? 'selected' : ''}>Pendiente</option>
+                            <option ${o.status === 'En Preparación' ? 'selected' : ''}>En Preparación</option>
+                            <option ${o.status === 'En Tránsito' ? 'selected' : ''}>En Tránsito</option>
+                            <option ${o.status === 'Entregado' ? 'selected' : ''}>Entregado</option>
+                            <option ${o.status === 'Cancelada' ? 'selected' : ''}>Cancelada</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-2" onclick="updateStatus(${o.id})">Actualizar</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="contactDelivery(${o.id})">Contactar Delivery</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateStatus(id) {
+            const select = document.getElementById('status-' + id);
+            if (!select) return;
+            const status = select.value;
+            const tokenMeta = document.querySelector('meta[name="_csrf"]');
+            const headerMeta = document.querySelector('meta[name="_csrf_header"]');
+            const headers = {'Content-Type':'application/x-www-form-urlencoded'};
+            if (tokenMeta && headerMeta) headers[headerMeta.getAttribute('content')] = tokenMeta.getAttribute('content');
+            const body = new URLSearchParams();
+            body.append('status', status);
+            fetch('/api/orders/' + encodeURIComponent(id) + '/status', { method: 'PUT', headers: headers, body: body.toString() })
+                .then(r => {
+                    if (r.ok) {
+                        fetchOrders();
+                        alert('Estado actualizado');
+                    } else {
+                        alert('No se pudo actualizar el estado');
+                    }
+                })
+                .catch(err => { console.error(err); alert('Error actualizando estado'); });
+        }
+
+        function contactDelivery(id) {
+            alert('Abrir diálogo/flujo de contacto con delivery para pedido ' + id);
+        }
+
+        document.getElementById('statusFilter').addEventListener('change', () => fetchOrders());
+        // inicial
+        fetchOrders();
+    </script>
+</body>
+</html>
