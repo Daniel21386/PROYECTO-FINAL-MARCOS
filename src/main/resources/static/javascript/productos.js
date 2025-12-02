@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // =========================================================
+  // 1. LÓGICA DE USUARIO Y NAVEGACIÓN
+  // =========================================================
+
   // 🔹 Botón de cerrar sesión
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
-      // Eliminar usuario activo del localStorage
       localStorage.removeItem('usuarioActivo');
-
-      // Redirigir al login
       window.location.href = '/login';
     });
   }
@@ -19,30 +20,21 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-
-        // Quitar la clase "active" de todos los botones
         buttons.forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
-
-        // Ocultar todas las secciones
         sections.forEach((sec) => sec.classList.add('d-none'));
 
-        // Mostrar solo la sección seleccionada
         const sectionId = btn.getAttribute('data-section');
         const targetSection = document.getElementById(sectionId);
 
         if (targetSection) {
           targetSection.classList.remove('d-none');
-        } else {
-          console.warn(`⚠️ No se encontró la sección con id "${sectionId}"`);
         }
       });
     });
-  } else {
-    console.warn('⚠️ No se encontraron botones o secciones para manejar el cambio de vista.');
   }
 
-  // Cargar promociones dinámicas desde la API y mostrarlas en la sección Promociones
+  // 🔹 Cargar promociones dinámicas
   function cargarPromocionesEnProductos() {
     const container = document.getElementById('promosContainer');
     if (!container) return;
@@ -51,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(promos => {
         container.innerHTML = '';
         if (!promos || promos.length === 0) {
-          container.innerHTML = '<div class="col-12"><div class="alert alert-secondary">No hay promociones en este momento.</div></div>';
+          container.innerHTML = '<div class="col-12"><div class="alert alert-secondary">No hay promociones.</div></div>';
           return;
         }
         promos.forEach(p => {
@@ -70,11 +62,107 @@ document.addEventListener('DOMContentLoaded', () => {
           container.appendChild(col);
         });
       })
-      .catch(err => {
-        console.error('Error cargando promociones en productos:', err);
-      });
+      .catch(err => console.error(err));
+  }
+  cargarPromocionesEnProductos();
+
+
+  // =========================================================
+  // 2. LÓGICA DEL CARRITO DE COMPRAS (DISEÑO MEJORADO)
+  // =========================================================
+
+  let carrito = JSON.parse(localStorage.getItem('carritoFitBoost')) || [];
+  actualizarCarritoUI();
+
+  // Escuchar clics
+  document.body.addEventListener('click', (e) => {
+    // Añadir al carrito
+    if (e.target.classList.contains('add-to-cart')) {
+      const btn = e.target;
+      const producto = {
+        nombre: btn.getAttribute('data-nombre'),
+        precio: parseFloat(btn.getAttribute('data-precio')),
+        id: new Date().getTime()
+      };
+      agregarAlCarrito(producto);
+    }
+    
+    // Eliminar del carrito (Buscamos el botón o el ícono dentro del botón)
+    const btnEliminar = e.target.closest('.btn-eliminar-item');
+    if (btnEliminar) {
+      const idEliminar = parseInt(btnEliminar.getAttribute('data-id'));
+      eliminarDelCarrito(idEliminar);
+    }
+  });
+
+  function agregarAlCarrito(producto) {
+    carrito.push(producto);
+    guardarCarrito();
+    actualizarCarritoUI();
   }
 
-  // Ejecutar carga de promociones al inicio
-  cargarPromocionesEnProductos();
+  function eliminarDelCarrito(id) {
+    carrito = carrito.filter(item => item.id !== id);
+    guardarCarrito();
+    actualizarCarritoUI();
+  }
+
+  function guardarCarrito() {
+    localStorage.setItem('carritoFitBoost', JSON.stringify(carrito));
+  }
+
+  function actualizarCarritoUI() {
+    // 1. Actualizar numerito rojo (Badge)
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+      cartCount.textContent = carrito.length;
+    }
+
+    // 2. Actualizar lista visual en el Modal
+    const listaCarrito = document.querySelector('#modalCarrito .col-md-5 .list-group');
+    
+    if (listaCarrito) {
+      listaCarrito.innerHTML = ''; 
+
+      let total = 0;
+
+      carrito.forEach(item => {
+        total += item.precio;
+        
+        const li = document.createElement('li');
+        // Usamos 'd-flex' para poner Izquierda (Texto) y Derecha (Precio+Botón)
+        // 'align-items-center' para que todo quede centrado verticalmente
+        li.className = 'list-group-item d-flex justify-content-between align-items-center py-3 px-3';
+        
+        li.innerHTML = `
+          <div class="me-auto pe-2" style="max-width: 65%;">
+            <h6 class="my-0 fw-bold text-dark" style="font-size: 0.95rem; line-height: 1.2;">${item.nombre}</h6>
+            <small class="text-muted" style="font-size: 0.85rem;">Suplemento</small>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <span class="fw-bold text-primary text-nowrap me-3" style="font-size: 1rem;">
+              S/ ${item.precio.toFixed(2)}
+            </span>
+            <button class="btn btn-sm btn-outline-danger btn-eliminar-item d-flex align-items-center justify-content-center" 
+                    style="width: 32px; height: 32px; border-radius: 50%; padding: 0;"
+                    data-id="${item.id}" 
+                    title="Eliminar producto">
+              <i class="bi bi-trash-fill" style="font-size: 1rem;"></i>
+            </button>
+          </div>
+        `;
+        listaCarrito.appendChild(li);
+      });
+
+      // 3. Fila del Total
+      const liTotal = document.createElement('li');
+      liTotal.className = 'list-group-item d-flex justify-content-between align-items-center bg-light py-3 px-3 mt-2 border-top';
+      liTotal.innerHTML = `
+        <span class="fw-bold fs-5 text-dark">Total</span>
+        <span class="fw-bold fs-4 text-primary">S/ ${total.toFixed(2)}</span>
+      `;
+      listaCarrito.appendChild(liTotal);
+    }
+  }
 });
